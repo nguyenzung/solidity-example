@@ -30,8 +30,6 @@ contract Community is ICommunity {
     // current consensus contract address
     address public override currentRuleConsesus;
 
-    // current candidate consensus contract address
-    address public currentCandidateRuleConsesus;
     
     event AddedMember(address indexed newMember);
     
@@ -48,17 +46,13 @@ contract Community is ICommunity {
     function voteNewRule(address newRule) external isMember{
         require(!voteChangeRuleHistory[msg.sender][newRule], "msg.sender has voted this rule");
         require(currentRuleConsesus != newRule, "New Rule is Current Rule");
-        if (currentCandidateRuleConsesus != newRule) {
-            delete ruleProposals[currentCandidateRuleConsesus];
-            currentCandidateRuleConsesus = newRule;
-        }
         ruleProposals[newRule] += 1;
         voteChangeRuleHistory[msg.sender][newRule] = true; // msg.sender voted this rule
     }
 
     function confirmNewRule(address newRule) external {
         require (ruleProposals[newRule] > population >> 1, "Can not change rule consensus");
-        delete ruleProposals[currentRuleConsesus];
+        delete ruleProposals[newRule];
         currentRuleConsesus = newRule;
     }
 
@@ -73,7 +67,7 @@ contract Community is ICommunity {
         IConsensusRule(memberProposals[candidate]).createProposal(msg.sender, candidate);
     }
 
-    function voteNewMember(address candidate) public isMember {
+    function voteNewMember(address candidate) external isMember {
         require(IConsensusRule(memberProposals[candidate]).isExistCandidate(candidate), "CANDIDATE EXIST");
         IConsensusRule(memberProposals[candidate]).vote(msg.sender, candidate);
     }

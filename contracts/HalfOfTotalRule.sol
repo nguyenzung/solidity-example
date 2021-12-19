@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import { ConsensusResult, IConsensusRule } from "./IConsensusRule.sol";
+import { IConsensusRule } from "./IConsensusRule.sol";
 import { ICommunity } from "./Community.sol";
 
 contract HalfOfTotalRule is IConsensusRule {
