@@ -4,7 +4,7 @@ I made a simple contract to manage a community.
 
 The community has 3 properties:
 1. The first member of the community is the contract creator.
-2. Can another members to the community. Every member of the community can vote for accepting new member (candidate). If the vote's result satify a consensus rule in community, the candidate can join community.
+2. Accept another members to join the community. Every member of the community can vote for accepting new member (candidate). If the vote's result satify a consensus rule in community, the candidate can join community.
 3. The community can change the consensus rule if more than 50% of members agree to make change.
 
 I also created 3 sol files.
