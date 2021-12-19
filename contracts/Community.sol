@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import { ConsensusResult, IConsensusRule } from "./IConsensusRule.sol";
+import {IConsensusRule} from "./IConsensusRule.sol";
 
 interface ICommunity {
     function members(address addr) external returns (bool);
