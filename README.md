@@ -9,5 +9,5 @@ The community has 3 properties:
 
 I also created 3 sol files.
 1. Community.sol manages community
-2. IConsensusRule.sol define functions that every consensus rule contract need to implement
+2. IConsensusRule.sol define functions that every consensus rule contract need to extend
 3. HalfOfTotalRule.sol: If more than 50% user agree to accept a candidate, the candidate can join the community
