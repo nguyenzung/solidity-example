@@ -80,7 +80,7 @@ contract Community is ICommunity {
 
     function claimMembership() public {
         require (IConsensusRule(memberProposals[msg.sender]).isAccepted(msg.sender), "INVALID CLAIM MEMBERSHIP");
-        // require(!members[msg.sender], "The candidate is already a member");
+        require(!members[msg.sender], "The candidate is already a member");
         addNewMember(msg.sender);
     }
 }
